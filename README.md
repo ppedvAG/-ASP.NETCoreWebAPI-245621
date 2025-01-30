@@ -27,9 +27,9 @@ KursRepository zu Kurs ASP.NET Core Web API - RESTful Webservices mit C# der ppe
 -	[x] [Model Binding](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/)
 
 -	[x] Content Negotiation
--	[ ] MediaTypes & [Formatters](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/media-formatters)
--	[ ] ActionResults als XML zurück geben 
--	[ ] ActionResults als CSV zurück geben 
+-	[x] MediaTypes & [Formatters](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/media-formatters)
+-	[x] ActionResults als XML zurück geben 
+-	[x] ActionResults als CSV zurück geben 
 
 -	[ ] Async/Await Pattern
 -	[ ] LAB: Movie Store Api

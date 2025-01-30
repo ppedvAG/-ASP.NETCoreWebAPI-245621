@@ -5,6 +5,15 @@ Accept: application/json
 
 ###
 
+GET {{VehicleManagement_HostAddress}}/vehicles/
+Accept: application/xml
+###
+
+GET {{VehicleManagement_HostAddress}}/vehicles/
+Accept: text/csv
+
+###
+
 GET {{VehicleManagement_HostAddress}}/vehicles/1
 Accept: application/json
 
@@ -17,6 +26,7 @@ Accept: application/json
 {
   "manufacturer": "Honda",
   "model": "Civic",
+  "color": "Blue",
   "fuel": "Gasoline",
   "topSpeed": 200,
   "type": "Sedan"
