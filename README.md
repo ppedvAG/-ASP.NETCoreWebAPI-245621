@@ -1,48 +1,89 @@
-# KURS NAME
+# ASP.NET Core WebAPI  -RESTful Webservices mit C#
+---
+KursRepository zu Kurs ASP.NET Core Web API - RESTful Webservices mit C# der ppedv AG
 
-Ein Kurs von PPEDV :rocket:
+## Modul 001 Einführung WebAPI
 
-## INTERN, dieses Kapitel vor der Schulung lÃ¶schen
+	-	[x] WheaterForecastAPI erstellt
+	-	[x] Projektstruktur erklärt
+	-	[x] [httpFiles](https://learn.microsoft.com/en-us/aspnet/core/test/http-files)
 
-### gitignore
+## Modul 002 Konfiguration
 
-gitignore in diesem Template ist an Visual Studio und damit auch an VSCode angepasst.
+	-	[ ] IOC mittels Dependency Injection
+	-	[ ] Logging in ASP.Net Core
 
-### about
+## Modul 003 Controllers
 
-FÃ¼ge diesen Text zum Abschnitt 'About' bei dem Repository direkt auf GitHub hinzu. Den Abschnitt findest Du oben rechts, wenn das Repo geÃ¶ffnet ist.
+	-	[ ] BusinessLogic Class Library Project erstellt
+	-	[ ] Vehicle Demo Klassen
+	-	[ ] Interface als Contract extrahiert
 
-`zeitraum: xx.xx.2021 | ort: VIRTUAL CLASSROOM / BURGHAUSEN / MÃœNCHEN / WIEN / BERLIN | format: VOLLZEIT / TEILZEIT / EASY.`
+## Modul 004 Routing, MediaTypes, Async/Await
 
-### website
+	-	[ ] Controller mit CRUD Operationen
 
-Auch durch 'About'-Button kommst Du zum Feld 'Website'. Gebe dort den Link zum Kursblatt Deiner Schulung auf ppedv.de an.
+	-	[ ] Route constraints
+	-	[ ] [Model Binding](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/)
 
-### topics
+	-	[ ] Content Negotiation
+	-	[ ] MediaTypes & [Formatters](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/media-formatters)
+	-	[ ] ActionResults als XML zurück geben 
+	-	[ ] ActionResults als CSV zurück geben 
 
-Auch durch 'About'-Button kommst Du zum Feld 'Topics'. Gebe dort bitte die Themen der Schulung an.
+	-	[ ] Async/Await Pattern
+	-	[ ] LAB: Movie Store Api
 
-### readme.md
+## Modul 005 EF Core
 
-Nachdem du ein Repo fÃ¼r ein konkretes Datum anhand von diesem Template erstellt hast, fÃ¼ge hier den Inhalt von der README.md Datei aus PPKURS-deinThema ein. UngefÃ¤hr in folgender syntax.
+	-	[ ] Code First: VehicleFleet Datenbank
+	-	[ ] Datenklasse mit Attriuten versetzt
+	-	[ ] DbContext erzeugt
+	-	[ ] Connection string erstellt
+	-	[ ] Abhängigkeiten via DI registriert
+	-	[ ] Best Practices: DTOs, Mapper
+	-	[ ] Validierung in DTOs
+	-	[ ] LAB: DB für Movie Store erstellen
 
-## M000 | WARMING UP
+```
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add myInitialScript --project myProject
+dotnet ef database update --project myProject
+```
 
-- [ ] Folien: Greeter.pdf
-- [ ] Demo: [platzhalter.md](m000/platzhalter.md)
-- [ ] Lab:
-- [ ] Commit:
-  
-## M001 | GETTING STARTED
+	-	[ ] Db First: Northwind Datenbank
+	-   [ ] [Northwind DB](https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/instnwnd.sql)
+	-	[ ] VS Extension [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools)
+	-	[ ] Controller erzeugen
+	-	[ ] LAB: Daten von Northwind abfragen
+			* Alle Bestellungen
+			* Alle Bestellungen innerhalb eines Zeitraumes (Parameter: StartDate, EndDate)
+			* Bestellungen pro Kunde (Parameter: CustomerID)
+			* Kunden pro Land (Parameter: Country)
 
-- [ ] Folien: DeinThema.pdf > Intro
-- [ ] Demo:
-- [ ] Lab:
-- [ ] Commit:
+## Modul 006 Testing
 
-## MXXX | `name vom modul`
+	-	[ ] [Überblick Strategien](https://learn.microsoft.com/de-de/ef/core/testing/)
+	-	[ ] [Unit Testing Controllers](https://learn.microsoft.com/en-us/aspnet/web-api/overview/testing-and-debugging/unit-testing-controllers-in-web-api)
+	-	[ ] Moq benutzen um Controller Dependencies zu mocken
+	-	[ ] LocalDB benutzen
 
-- [ ] Folien:
-- [ ] Demo:
-- [ ] Lab:
-- [ ] Commit:
+## Modul 007 HttpClient
+
+	-	[ ] Console App welche Anfragen auf die Northwind API macht
+	-	[ ] Response als JSON deserialisieren
+
+## Modul 008 Authentication
+
+	-	[ ] Middleware für Authentication konfigurieren
+	-	[ ] IdentityDbContext verwenden
+	-	[ ] JwtToken erstellen
+
+	-	[ ] Authentication mit Microsoft Identity Platform via Entra (ehem. Azure AD)
+	-	[ ] [Client Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets)
+	-	[ ] [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
+
+	
+## Modul 009 OData
+
+	-	[ ] OData Abfragen auf Northwind
