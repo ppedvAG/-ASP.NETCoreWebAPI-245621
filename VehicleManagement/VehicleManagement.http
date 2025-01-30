@@ -1,0 +1,43 @@
+@VehicleManagement_HostAddress = http://localhost:5042/api/v1
+
+GET {{VehicleManagement_HostAddress}}/vehicles/
+Accept: application/json
+
+###
+
+GET {{VehicleManagement_HostAddress}}/vehicles/1
+Accept: application/json
+
+###
+
+POST {{VehicleManagement_HostAddress}}/vehicles
+Content-Type: application/json
+Accept: application/json
+
+{
+  "manufacturer": "Honda",
+  "model": "Civic",
+  "fuel": "Gasoline",
+  "topSpeed": 200,
+  "type": "Sedan"
+}
+
+###
+
+PUT {{VehicleManagement_HostAddress}}/vehicles/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "manufacturer": "BMW",
+  "model": "Isetta",
+  "fuel": "Gasoline",
+  "color": "Red",
+  "topSpeed": 50
+}
+
+###
+
+DELETE {{VehicleManagement_HostAddress}}/vehicles/1
+Accept: application/json
+

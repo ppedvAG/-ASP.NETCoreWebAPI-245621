@@ -11,17 +11,17 @@ KursRepository zu Kurs ASP.NET Core Web API - RESTful Webservices mit C# der ppe
 ## Modul 002 Konfiguration
 
 -	[x] IOC mittels Dependency Injection
--	[ ] Logging in ASP.Net Core
+-	[x] Logging in ASP.Net Core
 
 ## Modul 003 Controllers
 
--	[ ] BusinessLogic Class Library Project erstellt
--	[ ] Vehicle Demo Klassen
--	[ ] Interface als Contract extrahiert
+-	[x] BusinessLogic Class Library Project erstellt
+-	[x] Vehicle Demo Klassen
+-	[x] Interface als Contract extrahiert
 
 ## Modul 004 Routing, MediaTypes, Async/Await
 
--	[ ] Controller mit CRUD Operationen
+-	[x] Controller mit CRUD Operationen
 
 -	[ ] Route constraints
 -	[ ] [Model Binding](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/)
