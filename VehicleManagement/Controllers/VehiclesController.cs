@@ -21,24 +21,24 @@ namespace VehicleManagement.Controllers
 
         // GET: api/<VehiclesController>
         [HttpGet]
-        public IEnumerable<AutoMobile> Get()
+        public IActionResult Get()
         {
-            return _vehicleService.GetVehicles();
+            return Ok(_vehicleService.GetVehicles());
         }
 
         // GET api/<VehiclesController>/5
         [HttpGet("{id:min(1)}")]
-        public AutoMobile Get(int id)
+        public ActionResult<AutoMobile> Get(int id)
         {
-            var result = _vehicleService.GetVehicle(id);
-
-            if (result == null) 
-            { 
+            var vehicle = _vehicleService.GetVehicle(id);
+            if (vehicle == null) 
+            {
                 // 404 wenn nichts gefunden wurde
-                //return NotFound();
+                return NotFound();
             }
 
-            return result;
+            var result = new ActionResult<AutoMobile>(vehicle);
+            return Ok(vehicle);
         }
 
         // POST api/<VehiclesController>
@@ -50,16 +50,26 @@ namespace VehicleManagement.Controllers
 
         // PUT api/<VehiclesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] AutoMobile value)
+        public IActionResult Put(int id, [FromBody] AutoMobile value)
         {
-            _vehicleService.UpdateVehicle(id, value);
+            var success = _vehicleService.UpdateVehicle(id, value);
+            if (success)
+            {
+                return Ok();
+            }
+            return NotFound();
         }
 
         // DELETE api/<VehiclesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _vehicleService.DeleteVehicle(id);
+            var success = _vehicleService.DeleteVehicle(id);
+            if (success)
+            {
+                return Ok();
+            }
+            return NotFound();
         }
     }
 }

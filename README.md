@@ -23,10 +23,10 @@ KursRepository zu Kurs ASP.NET Core Web API - RESTful Webservices mit C# der ppe
 
 -	[x] Controller mit CRUD Operationen
 
--	[ ] Route constraints
--	[ ] [Model Binding](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/)
+-	[x] Route constraints
+-	[x] [Model Binding](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/)
 
--	[ ] Content Negotiation
+-	[x] Content Negotiation
 -	[ ] MediaTypes & [Formatters](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/media-formatters)
 -	[ ] ActionResults als XML zurück geben 
 -	[ ] ActionResults als CSV zurück geben 
