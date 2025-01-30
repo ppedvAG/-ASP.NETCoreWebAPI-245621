@@ -1,0 +1,6 @@
+@HelloLogger_HostAddress = http://localhost:5209
+
+GET {{HelloLogger_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
