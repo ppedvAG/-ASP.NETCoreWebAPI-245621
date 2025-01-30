@@ -32,7 +32,7 @@ KursRepository zu Kurs ASP.NET Core Web API - RESTful Webservices mit C# der ppe
 -	[x] ActionResults als CSV zurück geben 
 
 -	[ ] Async/Await Pattern
--	[ ] LAB: Movie Store Api
+-	[x] LAB: Movie Store Api
 
 ## Modul 005 EF Core
 
