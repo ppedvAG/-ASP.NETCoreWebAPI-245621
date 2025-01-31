@@ -30,17 +30,17 @@ KursRepository zu Kurs ASP.NET Core Web API - RESTful Webservices mit C# der ppe
 -	[x] MediaTypes & [Formatters](https://learn.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/media-formatters)
 -	[x] ActionResults als XML zurück geben 
 -	[x] ActionResults als CSV zurück geben 
-
--	[ ] Async/Await Pattern
 -	[x] LAB: Movie Store Api
 
 ## Modul 005 EF Core
 
--	[ ] Code First: VehicleFleet Datenbank
--	[ ] Datenklasse mit Attriuten versetzt
--	[ ] DbContext erzeugt
--	[ ] Connection string erstellt
--	[ ] Abhängigkeiten via DI registriert
+-	[x] Code First: VehicleManagement Datenbank
+-	[x] Datenklasse mit Attriuten versetzt
+-	[x] DbContext erzeugt
+-	[x] Connection string erstellt
+-	[x] Abhängigkeiten via DI registriert
+
+-	[ ] Async/Await Pattern
 -	[ ] Best Practices: DTOs, Mapper
 -	[ ] Validierung in DTOs
 -	[ ] LAB: DB für Movie Store erstellen

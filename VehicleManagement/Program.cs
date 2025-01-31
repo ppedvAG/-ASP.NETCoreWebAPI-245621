@@ -1,5 +1,6 @@
 
 using BusinessModel.Contracts;
+using BusinessModel.Data;
 using BusinessModel.Services;
 using System.Text.Json.Serialization;
 using WebApiContrib.Core.Formatter.Csv;
@@ -12,9 +13,12 @@ namespace VehicleManagement
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            var connectionString = builder.Configuration.GetConnectionString("Default");
             // Add services to the container.
 
-            builder.Services.AddSingleton<IVehicleService, VehicleService>();
+            builder.Services.AddTransient<IVehicleService, VehicleService>();
+            builder.Services.AddSqlServer<VehicleDbContext>(connectionString);
+
             builder.Services.AddControllers()
                 .AddJsonOptions(options =>
                 {

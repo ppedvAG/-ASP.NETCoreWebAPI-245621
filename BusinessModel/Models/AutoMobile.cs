@@ -1,10 +1,15 @@
-﻿using System.Drawing;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 
 namespace BusinessModel.Models
 {
+    [PrimaryKey("Id")]
     public class AutoMobile
     {
-        public long Id { get; set; }
+        [Key, Column("VehicleId")]
+        public Guid Id { get; set; }
 
         public string Manufacturer { get; set; }
 

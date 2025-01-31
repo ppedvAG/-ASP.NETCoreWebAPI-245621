@@ -1,68 +1,54 @@
 ﻿using BusinessModel.Contracts;
+using BusinessModel.Data;
 using BusinessModel.Models;
-using System.Drawing;
 
 namespace BusinessModel.Services
 {
     public class VehicleService : IVehicleService
     {
-        private readonly List<AutoMobile> _vehicles = new List<AutoMobile>
-        {
-            new AutoMobile
-            {
-                Id = 1,
-                Manufacturer = "Audi",
-                Model = "A4",
-                TopSpeed = 200,
-                Fuel = "Diesel",
-                Color = KnownColor.LimeGreen,
-                Type = "Sedan",
-                RegistritationDate = new DateTime(2005, 5, 1)
-            },
-        };
+        private readonly VehicleDbContext context;
 
-        public VehicleService()
+        public VehicleService(VehicleDbContext context)
         {
+            this.context = context;
         }
 
         public IEnumerable<AutoMobile> GetVehicles()
         {
-            return _vehicles.ToArray();
+            return context.Vehicles.ToArray();
         }
 
-        public AutoMobile? GetVehicle(long id)
+        public AutoMobile? GetVehicle(Guid id)
         {
-            return _vehicles.SingleOrDefault(v => v.Id == id);
+            return context.Vehicles.SingleOrDefault(v => v.Id == id);
         }
 
         public void AddVehicle(AutoMobile vehicle)
         {
-            _vehicles.Add(vehicle);
+            context.Vehicles.Add(vehicle);
+            context.SaveChanges();
         }
 
-        public bool UpdateVehicle(long id, AutoMobile vehicle)
+        public bool UpdateVehicle(Guid id, AutoMobile vehicle)
         {
-            var existing = _vehicles.SingleOrDefault(v => v.Id == id);
-            if (existing != null)
+            if (context.Vehicles.Any(v => v.Id == id))
             {
-                existing.Manufacturer = vehicle.Manufacturer;
-                existing.Model = vehicle.Model;
-                existing.TopSpeed = vehicle.TopSpeed;
-                existing.Fuel = vehicle.Fuel;
-                existing.Color = vehicle.Color;
-                existing.Type = vehicle.Type;
-                existing.RegistritationDate = vehicle.RegistritationDate;
+                context.Vehicles.Update(vehicle);
+
+                context.SaveChanges();
                 return true;
             }
             return false;
         }
 
-        public bool DeleteVehicle(long id)
+        public bool DeleteVehicle(Guid id)
         {
-            var vehicle = _vehicles.SingleOrDefault(v => v.Id == id);
+            var vehicle = context.Vehicles.SingleOrDefault(v => v.Id == id);
             if (vehicle != null)
             {
-                _vehicles.Remove(vehicle);
+                context.Vehicles.Remove(vehicle);
+                context.SaveChanges();
+
                 return true;
             }
             return false;

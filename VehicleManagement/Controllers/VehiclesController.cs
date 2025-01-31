@@ -27,8 +27,8 @@ namespace VehicleManagement.Controllers
         }
 
         // GET api/<VehiclesController>/5
-        [HttpGet("{id:min(1)}")]
-        public ActionResult<AutoMobile> Get(int id)
+        [HttpGet("{id}")]
+        public ActionResult<AutoMobile> Get(Guid id)
         {
             var vehicle = _vehicleService.GetVehicle(id);
             if (vehicle == null) 
@@ -50,7 +50,7 @@ namespace VehicleManagement.Controllers
 
         // PUT api/<VehiclesController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] AutoMobile value)
+        public IActionResult Put(Guid id, [FromBody] AutoMobile value)
         {
             var success = _vehicleService.UpdateVehicle(id, value);
             if (success)
@@ -62,7 +62,7 @@ namespace VehicleManagement.Controllers
 
         // DELETE api/<VehiclesController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             var success = _vehicleService.DeleteVehicle(id);
             if (success)
