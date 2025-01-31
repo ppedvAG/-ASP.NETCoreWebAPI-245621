@@ -80,9 +80,9 @@ Update-Database
 
 ## Modul 008 Authentication
 
--	[ ] Middleware für Authentication konfigurieren
+-	[x] Middleware für Authentication konfigurieren
 -	[x] IdentityDbContext verwenden
--	[ ] JwtToken erstellen
+-	[x] JwtToken erstellen
 
 -	[ ] Authentication mit Microsoft Identity Platform via Entra (ehem. Azure AD)
 -	[ ] [Client Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets)

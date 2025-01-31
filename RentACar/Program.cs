@@ -1,9 +1,12 @@
 
 using BusinessModel.Contracts;
 using BusinessModel.Data;
+using BusinessModel.Models;
 using BusinessModel.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace RentACar
 {
@@ -18,6 +21,9 @@ namespace RentACar
 
             #region Authentication Stuff
 
+            var jwtSettings = builder.Configuration.GetSection("Jwt");
+            builder.Services.Configure<JwtOptions>(jwtSettings);
+
             builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -27,6 +33,8 @@ namespace RentACar
                 options.Password.RequiredLength = 6;
             }).AddEntityFrameworkStores<VehicleDbContext>();
 
+            var jwtOptions = jwtSettings.Get<JwtOptions>();
+
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme =
@@ -35,7 +43,22 @@ namespace RentACar
                 options.DefaultScheme = 
                 options.DefaultSignInScheme =
                 options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtOptions.Issuer,
+                    ValidAudience = jwtOptions.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        System.Text.Encoding.UTF8.GetBytes(jwtOptions.SigningKey)
+                    )
+                };
             });
+
+            builder.Services.AddTransient<ITokenService, JwtTokenService>();
 
             #endregion
 
@@ -46,7 +69,33 @@ namespace RentACar
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(option =>
+            {
+                option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+                option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter a valid token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
+                });
+                option.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            }
+                        },
+                        new string[]{}
+                    }
+                });
+            });
 
             var app = builder.Build();
 

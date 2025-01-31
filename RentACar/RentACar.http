@@ -1,16 +1,41 @@
-@RentACar_HostAddress = http://localhost:5097/api
+@RentACar_HostAddress = https://localhost:44300
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJSLiBSb290IiwiZW1haWwiOiJyb290QGV4YW1wbGUuY29tIiwianRpIjoiNDA1MzczZDItMjFjYi00MWUxLTlkMTUtMmUxZGE0MjRjZjRlIiwibmJmIjoxNzM4MzM1OTEyLCJleHAiOjE3Mzg5NDA3MTIsImlhdCI6MTczODMzNTkxMiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzMzMiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo0NDMwMCJ9.0i_su4la6DqtfA5uee-82kpxH1b4Chck7c9oTs-rPLo
 
-GET {{RentACar_HostAddress}}/vehicles/
+POST {{RentACar_HostAddress}}/account/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "R. Root",
+  "password": "Syst3m"
+}
+
+###
+
+POST {{RentACar_HostAddress}}/account/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "Web Api User 123",
+  "email": "webapiuser123@example.com",
+  "password": "Syst3m"
+}
+
+###
+
+GET {{RentACar_HostAddress}}/api/vehicles/
+Authorization: Bearer {{token}}
 Accept: application/json
 
 ###
 
-GET {{RentACar_HostAddress}}/vehicles/AEE4427E-FA9C-FC15-59A4-01ECDC416B86
+GET {{RentACar_HostAddress}}/api/vehicles/AEE4427E-FA9C-FC15-59A4-01ECDC416B86
 Accept: application/json
 
 ###
 
-POST {{RentACar_HostAddress}}/vehicles
+POST {{RentACar_HostAddress}}/api/vehicles
 Content-Type: application/json
 Accept: application/json
 
@@ -25,12 +50,12 @@ Accept: application/json
 
 ###
 
-GET {{RentACar_HostAddress}}/vehicles/9fc056c1-babc-43ec-d0c2-08dd41f4659f
+GET {{RentACar_HostAddress}}/api/vehicles/9fc056c1-babc-43ec-d0c2-08dd41f4659f
 Accept: application/json
 
 ###
 
-PUT {{RentACar_HostAddress}}/vehicles/9fc056c1-babc-43ec-d0c2-08dd41f4659f
+PUT {{RentACar_HostAddress}}/api/vehicles/9fc056c1-babc-43ec-d0c2-08dd41f4659f
 Content-Type: application/json
 Accept: application/json
 
@@ -44,6 +69,6 @@ Accept: application/json
 
 ###
 
-DELETE {{RentACar_HostAddress}}/vehicles/1
+DELETE {{RentACar_HostAddress}}/api/vehicles/1
 Accept: application/json
 
