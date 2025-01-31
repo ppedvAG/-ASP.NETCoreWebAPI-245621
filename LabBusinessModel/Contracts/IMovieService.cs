@@ -6,7 +6,7 @@ namespace BusinessLogic.Contracts
     {
         void AddMovie(Movie movie);
         void DeleteMovie(int id);
-        Movie GetMovie(int id);
+        Movie? GetMovie(int id);
         IList<Movie> GetMovies();
         void UpdateMove(Movie movie);
     }

@@ -1,7 +1,12 @@
-﻿namespace BusinessLogic.Models
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BusinessLogic.Models
 {
+    [PrimaryKey("Id")]
     public class Movie
     {
+        [Column("MovieId")]
         public int Id { get; set; }
 
         public string Title { get; set; }
