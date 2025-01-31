@@ -40,10 +40,10 @@ KursRepository zu Kurs ASP.NET Core Web API - RESTful Webservices mit C# der ppe
 -	[x] Connection string erstellt
 -	[x] Abhängigkeiten via DI registriert
 
--	[ ] Async/Await Pattern
+-	[x] Async/Await Pattern
 -	[ ] Best Practices: DTOs, Mapper
 -	[ ] Validierung in DTOs
--	[ ] LAB: DB für Movie Store erstellen
+-	[x] LAB: DB für Movie Store erstellen
 
 ```
 dotnet tool install --global dotnet-ef
