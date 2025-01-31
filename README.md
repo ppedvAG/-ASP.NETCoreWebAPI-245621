@@ -50,6 +50,11 @@ dotnet tool install --global dotnet-ef
 dotnet ef migrations add myInitialScript --project myProject
 dotnet ef database update --project myProject
 ```
+Alternativ DB erzeugen via Package Manager Console
+```
+Add-Migration MyInitialScriptName
+Update-Database
+```
 
 -	[ ] Db First: Northwind Datenbank
 -   [ ] [Northwind DB](https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/instnwnd.sql)
