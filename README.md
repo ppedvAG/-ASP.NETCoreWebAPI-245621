@@ -81,7 +81,7 @@ Update-Database
 ## Modul 008 Authentication
 
 -	[ ] Middleware für Authentication konfigurieren
--	[ ] IdentityDbContext verwenden
+-	[x] IdentityDbContext verwenden
 -	[ ] JwtToken erstellen
 
 -	[ ] Authentication mit Microsoft Identity Platform via Entra (ehem. Azure AD)

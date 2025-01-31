@@ -10,7 +10,7 @@ namespace BusinessModel.Models
         [Key, Column("OrderId")]
         public Guid Id { get; set; }
 
-        public Guid CustomerId { get; set; }
+        public long CustomerId { get; set; }
 
         public Customer Customer { get; set; }
 

@@ -1,9 +1,11 @@
 ﻿using BusinessModel.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessModel.Data
 {
-    public class VehicleDbContext : DbContext
+    // Statt DbContext verwenden wir jetzt den IdentityDbContext welcher Benutzer und Rollen enthaelt.
+    public class VehicleDbContext : IdentityDbContext
     {
         public readonly string ConnectionString;
 
@@ -27,7 +29,11 @@ namespace BusinessModel.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Seed.InitData(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+
+            new Seed()
+                .InitData(modelBuilder)
+                .InitIdentityData(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
