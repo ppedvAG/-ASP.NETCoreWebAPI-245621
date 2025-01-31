@@ -91,4 +91,4 @@ Update-Database
 	
 ## Modul 009 OData
 
--	[ ] OData Abfragen auf Northwind
+-	[x] OData Abfragen auf VehicleManagement

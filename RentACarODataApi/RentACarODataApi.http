@@ -1,0 +1,17 @@
+@RentACarODataApi_HostAddress = http://localhost:5012/odata
+
+// Zweite Seite der Fahrzeuge mit einer Seitenlaenge von 10 anzeigen
+GET {{RentACarODataApi_HostAddress}}/vehicles?$skip=10&$top=10
+Accept: application/json
+
+###
+
+// Gebe alle Elektrischen Fahrzeuge zurueck, sortiert nach TopSpeed absteigend
+GET {{RentACarODataApi_HostAddress}}/vehicles?$filter=Fuel+eq+'Electric'&$orderby=TopSpeed+desc
+Accept: application/json
+
+###
+
+// Gebe alle Fahrzeuge zurueck, welche 2020 erstmals gekauft wurden
+GET {{RentACarODataApi_HostAddress}}/vehicles?$filter=RegistritationDate+ge+2020-01-01+and+RegistritationDate+lt+2021-01-01
+Accept: application/json
