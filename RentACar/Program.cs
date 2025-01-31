@@ -17,6 +17,8 @@ namespace RentACar
             builder.Services.AddTransient<IVehicleServiceAsync, VehicleServiceAsync>();
             builder.Services.AddTransient<IOrderServiceAsync, OrderService>();
             builder.Services.AddSqlServer<VehicleDbContext>(connectionString);
+            builder.Services.AddControllers();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

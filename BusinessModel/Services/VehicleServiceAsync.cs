@@ -24,17 +24,27 @@ public class VehicleServiceAsync : IVehicleServiceAsync
         return await context.Vehicles.SingleOrDefaultAsync(v => v.Id == id);
     }
 
-    public async Task AddVehicleAsync(AutoMobile vehicle)
+    public async Task<Guid> AddVehicleAsync(AutoMobile vehicle)
     {
         context.Vehicles.Add(vehicle);
         await context.SaveChangesAsync();
+        return vehicle.Id;
     }
 
     public async Task<bool> UpdateVehicleAsync(Guid id, AutoMobile vehicle)
     {
-        if (await context.Vehicles.AnyAsync(v => v.Id == id))
+        var existingVehicle = await context.Vehicles.SingleOrDefaultAsync(v => v.Id == id);
+        if (existingVehicle != null)
         {
-            context.Vehicles.Update(vehicle);
+            // Aktualisiere die Eigenschaften des bestehenden Fahrzeugs
+            existingVehicle.Manufacturer = vehicle.Manufacturer;
+            existingVehicle.Model = vehicle.Model;
+            existingVehicle.Type = vehicle.Type;
+            existingVehicle.Fuel = vehicle.Fuel;
+            existingVehicle.TopSpeed = vehicle.TopSpeed;
+            existingVehicle.Color = vehicle.Color;
+            existingVehicle.RegistritationDate = vehicle.RegistritationDate;
+
             await context.SaveChangesAsync();
             return true;
         }

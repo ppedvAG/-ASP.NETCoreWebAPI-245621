@@ -10,12 +10,12 @@ namespace RentACar.Controllers;
 [ApiController]
 public class OrdersController : ControllerBase
 {
-    private readonly IOrderServiceAsync _vehicleService;
+    private readonly IOrderServiceAsync _service;
     private readonly ILogger<OrdersController> _logger;
 
     public OrdersController(IOrderServiceAsync vehicleService, ILogger<OrdersController> logger)
     {
-        _vehicleService = vehicleService;
+        _service = vehicleService;
         _logger = logger;
     }
 
@@ -23,7 +23,7 @@ public class OrdersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAsync()
     {
-        var vehicles = await _vehicleService.GetOrdersAsync();
+        var vehicles = await _service.GetOrdersAsync();
         return Ok(vehicles);
     }
 
@@ -31,7 +31,7 @@ public class OrdersController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Order>> GetAsync(Guid id)
     {
-        var vehicle = await _vehicleService.GetOrderAsync(id);
+        var vehicle = await _service.GetOrderAsync(id);
         if (vehicle == null)
         {
             // 404 wenn nichts gefunden wurde
@@ -45,7 +45,7 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] Order value)
     {
-        await _vehicleService.AddOrderAsync(value);
+        await _service.AddOrderAsync(value);
         return Ok();
     }
 
@@ -53,7 +53,7 @@ public class OrdersController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAsync(Guid id, [FromBody] Order value)
     {
-        var success = await _vehicleService.UpdateOrderAsync(id, value);
+        var success = await _service.UpdateOrderAsync(id, value);
         if (success)
         {
             return Ok();
@@ -65,7 +65,7 @@ public class OrdersController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(Guid id)
     {
-        var success = await _vehicleService.DeleteOrderAsync(id);
+        var success = await _service.DeleteOrderAsync(id);
         if (success)
         {
             return Ok();

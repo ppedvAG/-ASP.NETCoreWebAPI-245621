@@ -1,6 +1,49 @@
-@RentACar_HostAddress = http://localhost:5097
+@RentACar_HostAddress = http://localhost:5097/api
 
-GET {{RentACar_HostAddress}}/weatherforecast/
+GET {{RentACar_HostAddress}}/vehicles/
 Accept: application/json
 
 ###
+
+GET {{RentACar_HostAddress}}/vehicles/AEE4427E-FA9C-FC15-59A4-01ECDC416B86
+Accept: application/json
+
+###
+
+POST {{RentACar_HostAddress}}/vehicles
+Content-Type: application/json
+Accept: application/json
+
+{
+  "manufacturer": "Honda",
+  "model": "Civic",
+  "color": "Blue",
+  "fuel": "Gasoline",
+  "topSpeed": "200 km/h",
+  "type": "Sedan"
+}
+
+###
+
+GET {{RentACar_HostAddress}}/vehicles/9fc056c1-babc-43ec-d0c2-08dd41f4659f
+Accept: application/json
+
+###
+
+PUT {{RentACar_HostAddress}}/vehicles/9fc056c1-babc-43ec-d0c2-08dd41f4659f
+Content-Type: application/json
+Accept: application/json
+
+{
+  "manufacturer": "Honda",
+  "model": "Civic",
+  "fuel": "Hybrid",
+  "color": "Red",
+  "topSpeed": "250 km/h"
+}
+
+###
+
+DELETE {{RentACar_HostAddress}}/vehicles/1
+Accept: application/json
+

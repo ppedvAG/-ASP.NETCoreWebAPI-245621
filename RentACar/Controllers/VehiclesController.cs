@@ -1,6 +1,8 @@
 ﻿using BusinessModel.Contracts;
 using BusinessModel.Models;
 using Microsoft.AspNetCore.Mvc;
+using RentACar.Models;
+using RentACarApi.Mappers;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,12 +26,12 @@ public class VehiclesController : ControllerBase
     public async Task<IActionResult> GetAsync()
     {
         var vehicles = await _vehicleService.GetVehiclesAsync();
-        return Ok(vehicles);
+        return Ok(vehicles.Select(v => v.ToVehicleDto()));
     }
 
     // GET api/<VehiclesController>/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<AutoMobile>> GetAsync(Guid id)
+    public async Task<ActionResult<VehicleResultDto>> GetAsync(Guid id)
     {
         var vehicle = await _vehicleService.GetVehicleAsync(id);
         if (vehicle == null)
@@ -38,22 +40,34 @@ public class VehiclesController : ControllerBase
             return NotFound();
         }
 
-        return Ok(vehicle);
+        return Ok(vehicle.ToVehicleDto());
     }
 
     // POST api/<VehiclesController>
     [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] AutoMobile value)
+    public async Task<IActionResult> PostAsync([FromBody] VehicleDto value)
     {
-        await _vehicleService.AddVehicleAsync(value);
-        return Ok();
+        // Validierung, ob Parameter gueltig sind
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var guid = await _vehicleService.AddVehicleAsync(value.ToEntity());
+        return Ok(guid);
     }
 
     // PUT api/<VehiclesController>/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutAsync(Guid id, [FromBody] AutoMobile value)
+    public async Task<IActionResult> PutAsync(Guid id, [FromBody] VehicleDto value)
     {
-        var success = await _vehicleService.UpdateVehicleAsync(id, value);
+        // Validierung, ob Parameter gueltig sind
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var success = await _vehicleService.UpdateVehicleAsync(id, value.ToEntity());
         if (success)
         {
             return Ok();

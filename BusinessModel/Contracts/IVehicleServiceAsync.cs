@@ -4,7 +4,7 @@ namespace BusinessModel.Contracts
 {
     public interface IVehicleServiceAsync
     {
-        Task AddVehicleAsync(AutoMobile vehicle);
+        Task<Guid> AddVehicleAsync(AutoMobile vehicle);
         Task<bool> DeleteVehicleAsync(Guid id);
         Task<AutoMobile?> GetVehicleAsync(Guid id);
         Task<IEnumerable<AutoMobile>> GetVehiclesAsync();
